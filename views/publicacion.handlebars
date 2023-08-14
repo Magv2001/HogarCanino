@@ -1,0 +1,76 @@
+<div class="contenido-superior publicacion contenedor">
+    <div class="caja">
+        <p class="etiqueta">Perro/a en adopción</p>
+        <img src="/uploads/publicaciones/{{publicacion.imagen}}" class="publicacion-imagen">
+    </div>
+    <div class="caja">
+        <p class="etiqueta">Raza</p>
+        <p class="nombre raza">{{publicacion.raza}}</p>
+    </div>
+    <div class="caja">
+        <p class="etiqueta">Tamaño</p>
+        <p class="nombre tamano">{{publicacion.tamano}}</p>
+    </div>
+    <div class="caja">
+        <p class="etiqueta">Sexo</p>
+        <p class="nombre">{{publicacion.sexo}}</p>
+    </div>
+    <div class="caja">
+        <p class="etiqueta">Ubicación</p>
+        <p class="nombre">{{publicacion.ubicacion}}</p>
+    </div>
+</div>
+
+<div class="publicacion-contenedor contenedor">
+    <main class="contenido">
+        <h2>Descripción de la Publicación</h2>
+        <div class="publicacion-descripcion">
+            {{{publicacion.descripcion}}}
+        </div>
+
+        <a href="/publicaciones/denuncia" class="btn btn-amarillo editar-btn">Denunciar Publicación</a>
+    </main>
+    <aside class="sidebar">
+        <h2>Historial Médico</h2>
+        <ul class="historial">
+            {{#each publicacion.historial}}
+                <li>{{this}}</li>
+            {{/each}}
+        </ul>
+    </aside>
+</div>
+
+<div class="contenedor datos-reclutador">
+    <div class="enviar-datos">
+        <h2>Contactar</h2>
+        <p>Llena el siguiente formulario, para que nos pongamos en contacto contigo</p>
+
+        <form method="POST" action="/publicaciones/{{publicacion.url}}" class="default-form">
+            <div class="campo">
+                <label>Nombre</label>
+                <input type="text" name="nombre" placeholder="Tu Nombre">
+            </div>
+            <div class="campo">
+                <label>E-mail</label>
+                <input type="email" id="email" name="email" placeholder="Tu Email">
+            </div>
+            <div class="campo">
+                <label>Número de Teléfono</label>
+                <input type="tel" id="tel" name="tel" placeholder="Tu Número de Telefono o Celular">
+            </div>
+            <div class="campo">
+                <input type="submit" class="btn btn-verde" value="Enviar">
+            </div>
+        </form>
+
+    </div>
+
+    <div class="info-reclutador">
+        <h2>Perfíl del Contacto</h2>
+        <p>{{publicacion.usuario.nombre}}</p>
+        <p>{{publicacion.usuario.email}}</p>
+        {{#if publicacion.usuario.imagen}}
+            <img src="/uploads/perfiles/{{publicacion.usuario.imagen}}">
+        {{/if}}
+    </div>
+</div>

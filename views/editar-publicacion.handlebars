@@ -1,0 +1,58 @@
+<main class="contenedor">
+    <form action="/publicaciones/editar/{{publicacion.url}}" method="POST" class="default-form" enctype="multipart/form-data">
+        <h3>Información General</h3>
+
+        <div class="campo">
+            <label>Titulo</label>
+            <input type="text" value="{{publicacion.titulo}}" name="titulo" placeholder="Ej: ¡Buscando un hogar amoroso! Perro en adopción">
+        </div>
+        <div class="campo">
+            <label>Imagen</label>
+            <input type="file" name="imagen" placeholder="Sube una imagen de un perro o perra">
+            <img src="/uploads/publicaciones/{{publicacion.imagen}}" class="publicacion-imagen-editar">
+        </div>
+        <div class="campo">
+            <label>Raza</label>
+            <input type="text" value="{{publicacion.raza}}"  name="raza" placeholder="Ej: Mestizo, Cooker">
+        </div>
+        <div class="campo">
+            <label>Tamaño</label>
+            <select name="tamano">
+                {{#tipoTamano publicacion.tamano}}
+                    <option value="" disabled selected>-- Selecciona --</option>
+                    <option value="Grande">Grande</option>
+                    <option value="Mediano">Mediano</option>
+                    <option value="Mediana">Mediana</option>
+                    <option value="Pequeno">Pequeño</option>
+                    <option value="Pequena">Pequeña</option>
+                {{/tipoTamano}}
+            </select>
+        </div>
+        <div class="campo">
+            <label>Sexo</label>
+            <input type="text" value="{{publicacion.sexo}}" name="sexo" placeholder="Ej: Masculino, Macho">
+        </div>
+        <div class="campo">
+            <label>Ubicación</label>
+            <input type="text" value="{{publicacion.ubicacion}}" name="ubicacion" placeholder="Ej: Norte de Quito, Calderón">
+        </div>
+        <h3>Descripción de la publicación</h3>
+        <div class="campo descripcion">
+            <label>Descripción</label>
+            <input type="hidden" id="x" value="{{{publicacion.descripcion}}}" name="descripcion">
+            <trix-editor input="x"></trix-editor>
+        </div>
+
+        <h3>Historial Médico</h3>
+
+        <ul class="lista-historial">
+            {{#seleccionarHistorial publicacion.historial}}
+            {{/seleccionarHistorial}}
+        </ul>
+
+        <div class="campo centrar-horizontal">
+            <input type="hidden" name="historial" id="historial">
+            <input type="submit" value="Guardar Cambios" class="btn btn-azul">
+        </div>
+    </form>
+</main>

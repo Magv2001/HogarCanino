@@ -1,0 +1,4 @@
+node_modules/
+public/uploads/perfiles/*
+public/uploads/publicaciones/*  
+variables.env

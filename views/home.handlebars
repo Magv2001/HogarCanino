@@ -1,0 +1,38 @@
+<main class="lista-vacantes">
+    <h2>Lista de Publicaciones</h2>
+
+    {{#if publicaciones.length}}
+        {{#each publicaciones}}
+            <div class="publicacion">
+                <div class="caja">
+                    <h3>{{titulo}}</h3>
+                </div>
+                <div class="caja">
+                    <p class="etiqueta">Raza</p>
+                    <p class="nombre raza">{{raza}}</p>
+                </div>
+                <div class="caja">
+                    <p class="etiqueta">Ubicación</p>
+                    <p class="nombre">{{ubicacion}}</p>
+                </div>
+                <div class="caja centrar-vertical">
+                    <a href="/publicaciones/{{url}}" class="btn btn-verde">Más Info</a>
+                </div>
+            </div> 
+        {{/each}}
+    {{else}}
+        <p>No hay Publicaciones</p>
+    {{/if}}
+</main>
+
+<br>
+
+<main class="contenedor">
+    <h2>HogarCaninoBot</h2>
+    <br>
+    <p style="font-size: 24px;">Si tienes alguna duda sobre cómo cuidar y alimentar adecuadamente a tu nueva mascota, no dudes en consultar a nuestro chatbot.</p>
+</main>
+
+<div class="col-md-4 col-md-offset-4" style="display: flex; justify-content: center; align-items: center;">
+    <iframe width="350" height="430" allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/0b4e4e09-a9b4-4252-9a25-d82373399005"></iframe>
+</div>

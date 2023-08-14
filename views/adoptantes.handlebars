@@ -1,0 +1,24 @@
+<main class="lista-adoptantes">
+    <h2>Lista de Adoptantes</h2>
+    {{#if adoptantes.length}}
+        {{#each adoptantes}}
+            <div class="adoptante">
+                <div class="caja">
+                    <p class="etiqueta">Nombre:</p>
+                    <p class="nombre">{{nombre}}</p>
+                </div>
+                <div class="caja">
+                    <p class="etiqueta">E-mail:</p>
+                    <p class="nombre">{{email}}</p>
+                </div>
+                <div class="caja">
+                    <p class="etiqueta">Número de Teléfono:</p>
+                    <p class="nombre">{{telefono}}</p>
+                </div>
+            </div>
+        {{/each}}
+    {{else}}
+        <p>No hay adoptantes aún</p>
+
+    {{/if}}
+</main>

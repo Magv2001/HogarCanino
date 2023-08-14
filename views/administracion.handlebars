@@ -1,0 +1,36 @@
+<main class="lista-publicaciones">
+    <h2>Navegación</h2>
+    <div class="botones separador">
+        <a href="/editar-perfil" class="btn btn-azul">Editar Perfil</a>
+        <a href="/publicaciones/nueva" class="btn btn-verde">Nueva Publicación</a>
+    </div>
+
+    <h2>Tus Publicaciones</h2>
+
+    <div class="panel-administracion">
+        {{#if publicaciones.length}}
+            {{#each publicaciones}}
+                <div class="publicacion ">
+                    <div class="caja">
+                        <h3>{{titulo}}</h3>
+                        <p class="puesto">{{raza}}</p>
+                        <p class="adoptantes">
+                            {{adoptantes.length}} Adoptante(s)
+                        </p>
+                    </div>
+                    <div class="centrar-vertical caja">
+                        <a href="/adoptantes/{{id}}" class="btn btn-amarillo">Adoptantes</a>
+                    </div>
+                    <div class="centrar-vertical caja">
+                        <a href="/publicaciones/editar/{{url}}" class="btn btn-verde">Editar</a>
+                    </div>
+                    <div class="centrar-vertical caja">
+                        <a href="#" data-eliminar = {{id}} class="btn btn-rojo">Eliminar</a>
+                    </div>
+                </div>
+            {{/each}}
+        {{else}}
+            <p>No hay publicaciones, crea una</p>
+        {{/if}}
+    </div>
+</main>
