@@ -9,7 +9,7 @@ const emailConfig = require('../config/email');
 const { Op } = require('sequelize');
 
 const configuracionMulter = {
-    limits: { filesize: 100000 },
+    limits: { fileSize: 100000 },
     storage: fileStorage = multer.diskStorage({
         destination: (req, file, next) => {
             next(null, __dirname + '/../public/uploads/publicaciones/');
@@ -34,16 +34,16 @@ const upload = multer(configuracionMulter).single('imagen');
 
 // Sube imagen en el servidor
 exports.subirImagenPerro = (req, res, next) => {
-    upload(req, res, function (error) {
-        if (error) {
-            if (error instanceof multer.MulterError) {
-                if (error.code === 'LIMIT_FILE_SIZE') {
+    upload(req, res, function (err) {
+        if (err) {
+            if (err instanceof multer.MulterError) {
+                if (err.code === 'LIMIT_FILE_SIZE') {
                     req.flash('error', 'El archivo es muy grande: Máximo 100kb');
                 } else {
-                    req.flash('error', error.message);
+                    req.flash('error', err.message);
                 }
-            } else if (error.hasOwnProperty('message')) {
-                req.flash('error', error.message);
+            } else if (err.hasOwnProperty('message')) {
+                req.flash('error', err.message);
             }
             res.redirect('back');
             return;
